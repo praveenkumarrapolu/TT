@@ -1,0 +1,2663 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Class Time Tables and Faculty Individual Timetables</title>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i')) {
+    e.preventDefault();
+  }
+});
+</script>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left panel */
+.left {
+    width: 25%;
+    background: #f2f2f2;
+    overflow-y: auto;
+    border-right: 2px solid #ccc;
+}
+
+.left h3 {
+    text-align: center;
+    background: #004080;
+    color: white;
+    margin: 0;
+    padding: 10px;
+}
+
+.left a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #ddd;
+}
+
+.left a:hover {
+    background: #d9e6ff;
+}
+
+/* Right panel */
+.right {
+    width: 75%;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 6px;
+    text-align: center;
+}
+
+th {
+    background: #e6e6e6;
+}
+
+.faculty {
+    display: none;
+}
+
+.faculty h2 {
+    background: #004080;
+    color: white;
+    padding: 8px;
+}
+</style>
+
+<script>
+function showFaculty(id) {
+    let sections = document.getElementsByClassName("faculty");
+    for (let i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+    }
+    document.getElementById(id).style.display = "block";
+}
+</script>
+
+</head>
+<body>
+
+<div class="container">
+
+<!-- LEFT PANEL -->
+<div class="left">
+<h3>CLASS</h3>
+
+<a href="#" onclick="showFaculty('f2a')">II-A MINSKY</a>
+<a href="#" onclick="showFaculty('f2b')">II-B MCCARTHY</a>
+<a href="#" onclick="showFaculty('f2c')">II-C ANDREWS</a>
+<a href="#" onclick="showFaculty('f2d')">II-D ROSEN</a>
+
+<a href="#" onclick="showFaculty('f3a')">III-A MINSKY</a>
+<a href="#" onclick="showFaculty('f3b')">III-B MCCARTHY</a>
+<a href="#" onclick="showFaculty('f3c')">III-C ANDREWS</a>
+
+<a href="#" onclick="showFaculty('f4a')">IV-A MINSKY</a>
+<a href="#" onclick="showFaculty('f4b')">IV-B MCCARTHY</a>
+<a href="#" onclick="showFaculty('f4c')">IV-C ANDREWS</a>
+
+<h3>Faculty List</h3>
+
+<a href="#" onclick="showFaculty('f1')">Dr. B.V. Srinivasulu</a>
+<a href="#" onclick="showFaculty('f2')">Dr. P. Muralidhar</a>
+<a href="#" onclick="showFaculty('f3')">Mr. P. Ravi Kishore</a>
+<a href="#" onclick="showFaculty('f4')">Mr. S. Kranthireddy</a>
+<a href="#" onclick="showFaculty('f5')">Mr. P.M. Naidu</a>
+<a href="#" onclick="showFaculty('f6')">Dr. Merin Susan Philip</a>
+<a href="#" onclick="showFaculty('f7')">Mr. N. Ashwan Kumar</a>
+<a href="#" onclick="showFaculty('f8')">Dr. J.R.V. Jeny</a>
+<a href="#" onclick="showFaculty('f9')">Ms. Lavanya</a>
+<a href="#" onclick="showFaculty('f10')">Dr. Narayana Sangam</a>
+<a href="#" onclick="showFaculty('f11')">B. Mahesh</a>
+<a href="#" onclick="showFaculty('f12')">Mr. M. Venkateswarlu</a>
+<a href="#" onclick="showFaculty('f13')">MD. NAZEER HUSSAIN </a>
+<a href="#" onclick="showFaculty('f14')">Mr. U. Naresh </a>
+<a href="#" onclick="showFaculty('f15')">Ms. CH. Sri Lakshmi</a>
+<a href="#" onclick="showFaculty('f16')">Mr. T.V. Laxmi Narayana</a>
+<a href="#" onclick="showFaculty('f17')">Mr.Venu Gopal</a>
+<a href="#" onclick="showFaculty('f18')">Mr. K. Sudhakar</a>
+<a href="#" onclick="showFaculty('f19')">Mr.K. Gopi</a>
+<a href="#" onclick="showFaculty('f20')">Mr. R. Praveen Kumar</a>
+<a href="#" onclick="showFaculty('f21')">Ms. M. Vineela</a>
+<a href="#" onclick="showFaculty('f22')">Dr. Godwin</a>
+<a href="#" onclick="showFaculty('f23')">Mr.T. Nagarjun</a>
+<a href="#" onclick="showFaculty('f24')">Ms. I. Rohini</a>
+<a href="#" onclick="showFaculty('f25')">Ms. CH. Sai Vijaya</a>
+<a href="#" onclick="showFaculty('f26')">Mr. A. Venkanna</a>
+<a href="#" onclick="showFaculty('f27')">Mr. K. Mahesh</a>
+<a href="#" onclick="showFaculty('f28')">Ms. K. Sandhya</a>
+<a href="#" onclick="showFaculty('f29')">Ms.M. Anjali</a>
+<a href="#" onclick="showFaculty('f30')">Mr. M. Mahesh</a>
+<a href="#" onclick="showFaculty('f31')">Mr. E Santhosh Kumar</a>
+<a href="#" onclick="showFaculty('f32')">Mrs. B. Mounica</a>
+
+
+
+<!-- continue similarly for all faculty -->
+</div>
+
+<!-- RIGHT PANEL -->
+<div class="right">
+
+<div id="f2a" class="faculty">
+<h2>AY: 2025–26 | YEAR/SEM: II/II | CSE(AIML) – A SECTION (Minisky)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>ATCD</td><td>JAVA</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>DBMS</td><td>IAI</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td>CRT</td><td>DM</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td class="red">JAVA</td><td>DBMS</td>
+<td colspan="2">PROLOG LAB</td>
+<td class="red">ATCD</td><td>Counseling</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td COLSPAN=2>CRT</td><td>DM</td>
+<td>JAVA</td>
+<td COLSPAN=2>RTRP</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>DM</td><td>IAI</td>
+<td>JAVA</td><td>DM</td>
+<td COLSPAN=2>DBMS LAB</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>DM</td><td>IAI</td>
+<td>ATCD</td><td>DBMS</td>
+<td COLSPAN=2>JAVA LAB</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td>DBMS</td><td class="red">IAI</td>
+<td COLSPAN=2>RTRP</td>
+<td>GS LAB</td><td>ATCD</td>
+</tr>
+</table>
+
+</div>
+<div id="f2b" class="faculty">
+<h2>AY: 2025–26 | YEAR/SEM: II/II | CSE(AIML) – B SECTION (McCarthy)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td COLSPAN=2>CRT</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>DM</td><td>ATCD</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td COLSPAN=2>JAVA LAB</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>DM</td><td>JAVA</td>
+<td colspan="2">DM DBMS LAB</td>
+<td>ATCD</td><td>Counseling</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>DBMS</td><td>DM</td>
+<td colspan="2">PROLOG LAB</td>
+<td class="red">JAVA</td><td>IAI</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>ATCD</td><td>DBMS</td>
+<td>ATCD</td><td>IAI</td>
+<td>CRT</td><td>JAVA</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>JAVA</td><td>IAI</td>
+<td COLSPAN=2>RTRP</td>
+<td>DM</td><td>DBMS</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td>IAI</td><td class="red">DBMS</td>
+<td>GS LAB</td><td>ATCD</td>
+<td COLSPAN=2>RTRP</td>
+</tr>
+</table>
+</div>
+
+<!-- ================= SECTION C ================= -->
+<div id="f2c" class="faculty">
+<h2>AY: 2025–26 | YEAR/SEM: II/II | CSE(AIML) – C SECTION (Andrew)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>DBMS</td><td>IAI</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td colspan="2">PROLOG LAB</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td class="red">JAVA</td><td>CRT</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>ATCD</td><td>IAI</td>
+<td>DM</td><td>DBMS</td>
+<td class="red">JAVA</td><td>Counseling</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>IAI</td><td>ATCD</td>
+<td COLSPAN=2>CRT</td>
+<td COLSPAN=2>JAVA LAB</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>JAVA</td><td>DBMS</td>
+<td>DM</td><td>ATCD</td>
+<td COLSPAN=2>DBMS LAB</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>DM</td><td>JAVA</td>
+<td COLSPAN=2>RTRP</td>
+<td>DBMS</td><td>ATCD</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td>GS LAB</td><td>ATCD</td>
+<td>IAI</td>
+<td>DM</td><td COLSPAN=2>RTRP</td>
+</tr>
+</table>
+
+</div>
+<!-- ================= SECTION D ================= -->
+<div id="f2d" class="faculty">
+<h2>AY: 2025–26 | YEAR/SEM: II/II | CSE(AIML) – D SECTION (Rosen)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>JAVA</td><td>DM</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td colspan="2">CRT</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td class="red">IAI</td><td>ATCD</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>DM</td><td>ATCD</td>
+<td COLSPAN=2>DBMS LAB</td>
+<td>JAVA</td><td>Counseling</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>IAI</td><td>ATCD</td>
+<td>DBMS</td><td>DM</td>
+<td colspan="2">PROLOG LAB</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>DBMS</td><td>JAVA</td>
+<td COLSPAN=2>RTRP</td>
+<td>IAI</td><td>CRT</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>ATCD</td><td>DBMS</td>
+<td colspan="2">JAVA LAB</td>
+<td>JAVA</td><td>DM</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td>GS LAB</td><td>ATCD</td>
+<td COLSPAN=2>RTRP</td>
+<td>DBMS</td><td class="red">IAI</td>
+</tr>
+</table>
+</div>
+
+<div id="f3a" class="faculty">
+<!-- ================= SECTION A ================= -->
+<h2>AY: 2025-26 (W.E.F 10-12-2025) | YEAR/SEM: III/II | CSE(AI&ML) – A SECTION (Minsky)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>CNS</td><td>NLP</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>KRR</td><td>DA</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td colspan="2">NLP LAB</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>KRR</td><td>NLP</td>
+<td>DA</td><td>CNS</td>
+<td>CNS</td><td>Counseling</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>DA</td><td>DPPM</td>
+<td>KRR</td><td>DPPM</td>
+<td>CNS</td><td>DA</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>DPPM</td><td>DA</td>
+<td colspan="2">DA LAB</td>
+<td>NLP</td><td>KRR</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>NLP</td><td>CNS</td>
+<td>DPPM</td><td>KRR</td>
+<td colspan="2">DEVOPS LAB</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td colspan="2">DEVOPS LAB</td>
+<td>KRR</td><td>NLP</td>
+<td colspan="2">IP</td>
+</tr>
+</table>
+
+</div>
+<div id="f3b" class="faculty">
+<!-- ================= SECTION B ================= -->
+<h2>AY: 2025-26 (W.E.F 10-12-2025) | YEAR/SEM: III/II | CSE(AI&ML) – B SECTION (McCarthy)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>DA</td><td>DPPM</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>CNS</td><td>KRR</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td colspan="2">NLP LAB</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>KRR</td><td>CNS</td>
+<td>DPPM</td><td>NLP</td>
+<td>DA</td><td>Counseling</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>NLP</td><td>CNS</td>
+<td>NLP</td><td>DA</td>
+<td colspan="2">DEVOPS LAB</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>DPPM</td><td>CNS</td>
+<td>KRR</td><td>NLP</td>
+<td>NLP</td><td>DA</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>DA</td><td>CNS</td>
+<td>DPPM</td><td>KRR</td>
+<td colspan="2">DA LAB</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td colspan="2">IP</td>
+<td>DA</td><td>KRR</td>
+<td colspan="2">DEVOPS LAB</td>
+</tr>
+</table>
+</div>
+<div id="f3c" class="faculty">
+
+<!-- ================= SECTION C ================= -->
+<h2>AY: 2025-26 (W.E.F 10-12-2025) | YEAR/SEM: III/II | CSE(AI&ML) – C SECTION (Andrews)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>NLP</td><td>KRR</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>CNS</td><td>DA</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td colspan="2">DA LAB</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>DA</td><td>NLP</td>
+<td colspan="2">DEVOPS LAB</td>
+<td>KRR</td><td>Counseling</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>CNS</td><td>DPPM</td>
+<td>DA</td><td>CNS</td>
+<td>KRR</td><td>NLP</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>KRR</td><td>NLP</td>
+<td>DA</td><td>DPPM</td>
+<td>DA</td><td>CNS</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>DPPM</td><td>KRR</td>
+<td>NLP</td><td>CNS</td>
+<td colspan="2">NLP LAB</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td colspan="2">DEVOPS LAB</td>
+<td colspan="2">IP</td>
+<td>DPPM</td><td>KRR</td>
+</tr>
+</table>
+</div>
+
+<div id="f4a" class="faculty">
+<!-- ================= SECTION A ================= -->
+<h2>AY: 2025-26 (W.E.F 19-12-2025) | YEAR/SEM: IV/II | CSE(AI&ML) – A SECTION (Minsky)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td colspan="2">Project Stage-II</td>
+<td class="vertical" rowspan="4">BREAK</td>
+<td colspan="2">Project Stage-II</td>
+<td class="vertical" rowspan="4">LUNCH</td>
+<td colspan="2">Project Stage-II</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>WS</td><td>CB</td>
+<td>RPA</td><td>CB</td>
+<td>WS</td><td>RPA</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>RPA</td><td>WS</td>
+<td>CB</td><td>RPA</td>
+<td>WS</td><td>CB</td>
+</tr>
+</table>
+</div>
+<div id="f4b" class="faculty">
+
+<!-- ================= SECTION B ================= -->
+<h2>AY: 2025-26 (W.E.F 19-12-2025) | YEAR/SEM: IV/II | CSE(AI&ML) – B SECTION (McCarthy)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>CB</td><td>RPA</td>
+<td class="vertical" rowspan="4">BREAK</td>
+<td>WS</td><td>CB</td>
+<td class="vertical" rowspan="4">LUNCH</td>
+<td>RPA</td><td>WS</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>WS</td><td>CB</td>
+<td>RPA</td><td>WS</td>
+<td>CB</td><td>RPA</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+</tr>
+</table>
+</div>
+<div id="f4c" class="faculty">
+
+<!-- ================= SECTION C ================= -->
+<h2>AY: 2025-26 (W.E.F 19-12-2025) | YEAR/SEM: IV/II | CSE(AI&ML) – C SECTION (Andrews)</h3>
+
+<table>
+<tr>
+<th>Day</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>RPA</td><td>WS</td>
+<td class="vertical" rowspan="4">BREAK</td>
+<td>CB</td><td>RPA</td>
+<td class="vertical" rowspan="4">LUNCH</td>
+<td>WS</td><td>CB</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>CB</td><td>RPA</td>
+<td>WS</td><td>CB</td>
+<td>RPA</td><td>WS</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+<td colspan="2">Project Stage-II</td>
+</tr>
+</table>
+</div>
+
+
+<div id="f1" class="faculty">
+<h2>Dr. B.V. Srinivasulu</h2>
+<p><b>Year & Subject:</b> III-A,C – KRR | II-D – RTRP</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Dr. B.V. Srinivasulu
+&nbsp;&nbsp;&nbsp;&nbsp;
+YEAR & SUBJECT: III-A,C – KRR | II-D – RTRP
+</td>
+</tr>
+
+<tr>
+<th>Day / Time</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td>
+<td>3C</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>3A</td>
+<td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>3A</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3C</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td>
+<td></td>
+<td>3A</td>
+<td></td>
+<td>3C</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>3C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3A</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td>
+<td>3C</td>
+<td></td>
+<td>3A</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td>
+<td></td>
+<td>3A</td>
+<td></td>
+<td></td>
+<td>3C</td>
+</tr>
+</table>
+
+
+</div>
+
+<div id="f2" class="faculty">
+<h2>Dr. P. Muralidhar</h2>
+<p><b>Year & Subject:</b> III-B – KRR</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Dr. P. Muralidhar
+&nbsp;&nbsp;&nbsp;&nbsp;
+YEAR & SUBJECT: III-B – KRR
+</td>
+</tr>
+
+<tr>
+<th>Day / Time</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td>
+<td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td>
+<td>3B</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>3B</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3CSEA</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3CSEB</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td>
+<td></td>
+<td>3B</td>
+<td></td>
+<td>3CSEC</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3B</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3B</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</div>
+
+<div id="f3" class="faculty">
+<h2>Mr. P. Ravi Kishore</h2>
+<p><b>Year & Subject:</b> III-A,B – DA & LAB</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. P. Ravi Kishore
+&nbsp;&nbsp;&nbsp;&nbsp;
+YEAR & SUBJECT: III-A,B – DA & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day / Time</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td>
+<td>3B</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td>
+<td>3A</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td>
+<td></td>
+<td>3A</td>
+<td></td>
+<td>3B</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>3A</td>
+<td></td>
+<td></td>
+<td>3B</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td>
+<td>3A</td>
+<td colspan="2">3A - DA LAB</td>
+<td></td>
+<td>3B</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>3B</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3B - DA LAB</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+</div>
+
+<div id="f4" class="faculty">
+<h2>Mr. S. Kranthireddy</h2>
+<p><b>Year & Subject:</b> III-C – DA & LAB</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. S. Kranthireddy
+&nbsp;&nbsp;&nbsp;&nbsp;
+YEAR & SUBJECT: III-C – DA & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day / Time</th>
+<th>8.45-9.45</th>
+<th>9.45-10.45</th>
+<th>10.45-11.00</th>
+<th>11.00-12.00</th>
+<th>12.00-01.00</th>
+<th>1.00-1.40</th>
+<th>1.40-2.40</th>
+<th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td>
+<td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td>
+<td>3C</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td>3C-DA LAB</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>3C</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td>
+<td></td>
+<td>3C</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td>
+<td></td>
+<td>3C</td>
+<td></td>
+<td>3C</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3C</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+</div>
+
+<div id="f5" class="faculty">
+<h2>Mr. P.M. Naidu</h2>
+<p><b>Year & Subject:</b> III-A – NLP & LAB</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. P.M. Naidu &nbsp;&nbsp; YEAR & SUBJECT: III-A – NLP & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td>3A</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td colspan="2">3A - NLP LAB</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>3A</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td></td><td>3A</td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>3A</td>
+<td></td><td></td><td></td><td>3A - IP</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td>3A</td><td></td><td></td>
+</tr>
+</table>
+
+</div>
+<div id="f6" class="faculty">
+<h2>Mr. P.M. Naidu</h2>
+<p><b>Year & Subject:</b> III-B,C – NLP & LAB</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Dr. Merin Susan Philip &nbsp;&nbsp; YEAR & SUBJECT: III-B,C – NLP & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>3C</td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td>3B</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td colspan="2">3B NLP LAB</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>3C</td>
+<td></td><td>3B</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>3B</td><td></td>
+<td>3B</td><td></td><td></td><td>3C</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td>3C</td>
+<td></td><td>3B</td><td></td><td>3B</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td>3C</td><td></td><td></td><td colspan="2">3C NLP LAB</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+</table>
+
+</div>
+<div id="f7" class="faculty">
+<h2>Mr. N. Ashwan Kumar</h2>
+<p><b>Year & Subject:</b> III-A,C – CNS</p>
+
+<table>
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>3A</td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>3C</td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td></td><td>3A</td><td></td><td>3A</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>3C</td><td></td>
+<td></td><td>3C</td><td></td><td>3A</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td>3C</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>3A</td>
+<td></td><td>3C</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td colspan="2">3C - IP</td><td></td><td></td>
+</tr>
+</table>
+
+</div>
+<div id="f8" class="faculty">
+<h2>Dr. J.R.V. Jeny </h2>
+<p><b>Year & Subject:</b> III-B – CNS</p>
+
+<table>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>3B</td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr><td>Tuesday</td><td></td><td>3B</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Wednesday</td><td></td><td>3B</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Thursday</td><td></td><td>3B</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Friday</td><td></td><td>3B</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Saturday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+</div>
+
+<div id="f9" class="faculty">
+<h2>Ms. Lavanya </h2>
+<p><b>Year & Subject:</b> III-A – DPPM</p>
+
+<table>
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td>3B</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td>SE-II</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td>3B</td><td></td><td></td><td>SE-II</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>SE-II</td>
+<td></td><td>CAD LAB</td><td></td><td>CAD LAB</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td>3B</td>
+<td></td><td></td><td>SE-II</td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>SE-II</td>
+<td></td><td>3B</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td>*IP/IOMP</td><td></td><td>*IP/IOMP</td>
+</tr>
+</table>
+</div>
+
+<div id="f10" class="faculty">
+<h2>Dr. Narayana Sangam </h2>
+<p><b>Year & Subject:</b> III-B – DPPM</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Dr. Narayana Sangam &nbsp;&nbsp; YEAR & SUBJECT: III-B – DPPM
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>DPPM(EEE)</td><td>EIE(4-2)</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>EP</td><td>EIE(4-2)</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td>EIE(3-2)</td><td>EP</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>EP</td><td></td>
+<td>EP</td><td>EIE(4-2)</td><td>EIE(3-2)</td><td>EIE(4-2)</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>EIE(3-2)</td><td>3A</td>
+<td></td><td>3A</td><td>DPPM(EEE)</td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>3A</td><td></td>
+<td>EIE(3-2)</td><td>DPPM(EEE)</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td>3A</td><td></td><td></td><td>EIE(3-2)</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td>DPPM(EEE)</td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+</table>
+</div>
+<div id="f11" class="faculty">
+<h2>Mr. B. Mahesh </h2>
+<p><b>Year & Subject:</b> III-C – DPPM</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. B. Mahesh &nbsp;&nbsp; YEAR & SUBJECT: III-C – DPPM
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>AR&W</td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td>AR&W</td><td>GBT</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>AR&W</td>
+<td></td><td></td><td>AR&W</td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>3C</td>
+<td>GBT</td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td>GBT</td><td>3C</td><td></td><td>GBT</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td>3C</td><td></td>
+<td>EE LAB</td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td>3C</td>
+</tr>
+</table>
+</div>
+<div id="f12" class="faculty">
+<h2>Mr. M. Venkateswarlu  </h2>
+<p><b>Year & Subject:</b> III-A DEVOPS LAB, IV-A,B,C – WS</p>
+
+<table>
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+
+<tr>
+<td>Monday</td>
+<td></td><td>4C</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>4B</td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td>4C</td><td>4B</td>
+</tr>
+<tr>
+<td>Tuesday</td>
+<td>4B</td><td></td><td>4C</td><td>4B</td><td></td><td>4C</td>
+</tr>
+<tr>
+<td>Wednesday</td>
+<td>4A</td><td></td><td></td><td></td><td>4A</td><td></td>
+</tr>
+<tr>
+<td>Thursday</td>
+<td></td><td>4A</td><td></td><td></td><td>4A	</td><td></td>
+</tr>
+<tr>
+<td>Friday</td>
+<td></td><td></td><td></td><td></td><td COLSPAN=2>3A-DEVOPS LAB</td>
+</tr>
+<tr>
+<td>Saturday</td>
+<td COLSPAN=2>3A-DEVOPS LAB</td><td></td><td></td><td></td><td></td>
+</tr>
+</table>
+</div>
+<div id="f13" class="faculty">
+<h2>MD. NAZEER HUSSAIN   </h2>
+<p><b>Year & Subject:</b> III-B – DEVOPS LAB, IV-ABC – CB</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: MD. NAZEER HUSSAIN &nbsp;&nbsp; YEAR & SUBJECT: III-B – DEVOPS LAB, IV-ABC – CB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>4B</td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>4C</td><td>4B</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td>4C</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td>4C</td><td>4B</td>
+<td></td><td>4C</td><td></td><td>4B</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>4A</td>
+<td></td><td>4A</td><td></td>
+<td>3B - DEVOPS LAB</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td>4A</td><td></td><td>4A</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td></td><td></td><td></td>
+<td colspan="2">3B - DEVOPS LAB</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+</table>
+</div>
+
+<div id="f14" class="faculty">
+<h2>Mr. U. Naresh  </h2>
+<p><b>Year & Subject:</b> II-A,C – IAI | III-C – DEVOPS LAB</p>
+
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. U. Naresh &nbsp;&nbsp; YEAR & SUBJECT: II-A,C – IAI | III-C – DEVOPS LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td>2C</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td>2A</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>2C</td>
+<td colspan="2">3C - DEVOPS LAB</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td>2C</td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>2A</td><td></td>
+<td></td><td></td><td></td><td colspan="2">3C - DEVOPS LAB</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>2A</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td>2A</td>
+<td></td><td>2C</td><td></td><td></td>
+</tr>
+</table>
+</div>
+<div id="f15" class="faculty">
+<h2>Mrs. Sri Lakshmi </h2>
+<p><b>Year & Subject:</b> II-A – DM</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mrs. Sri Lakshmi&nbsp;&nbsp; YEAR & SUBJECT: II-A – DM
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td>2A</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td>2A</td><td></td><td></td><td></td>
+</tr>
+
+<tr><td>Thursday</td><td></td><td></td><td></td><td>2A</td><td></td><td></td></tr>
+
+<tr>
+<td>Friday</td>
+<td>2A</td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr><td>Saturday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+</DIV>
+
+
+<div id="f16" class="faculty">
+<h2>Mr. T.V. Laxmi Narayana</h2>
+<p><b>Year & Subject:</b> II-B – DM</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. T.V. Laxmi Narayana &nbsp;&nbsp; YEAR & SUBJECT: II-B – DM
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>2B</td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>2B</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>2B</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr><td>Thursday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td>2B</td>
+</tr>
+
+<tr><td>Saturday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+</DIV>
+<div id="f17" class="faculty">
+<h2>Mr. Venu Gopal</h2>
+<p><b>Year & Subject:</b> II-C,D – DM</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. Venu Gopal &nbsp;&nbsp; YEAR & SUBJECT: II-C,D – DM
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td>2D</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>2D</td>
+<td>2C</td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td>2C</td><td>2D</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td>2C</td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>2C</td>
+<td></td><td></td><td></td><td>2D</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td>2C</td><td></td>
+</tr>
+</table>
+</DIV>
+<div id="f18" class="faculty">
+<h2>Mr. K. Sudhakar</h2>
+<p><b>Year & Subject:</b> II-A,C – ATCD</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. K. Sudhakar &nbsp;&nbsp; YEAR & SUBJECT: II-A,C – ATCD
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>2A</td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>2C</td>
+<td></td><td></td><td>2A</td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>2C</td>
+<td></td><td></td><td colspan="2">2A - RTRP</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td>2A</td>
+<td></td><td>2C</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td>2A</td><td></td><td></td><td>2C</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td>2C</td>
+<td></td><td></td><td></td><td>2A</td>
+</tr>
+</table>
+</DIV>
+<div id="f19" class="faculty">
+<h2>Mr. K. Gopi</h2>
+<p><b>Year & Subject:</b> II-A,D – DBMS & LAB</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. K. Gopi &nbsp;&nbsp; YEAR & SUBJECT: II-A,D – DBMS & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td>2A</td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>2A</td>
+<td colspan="2">2D - DBMS LAB</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>2D</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td>2D</td><td></td>
+<td></td><td></td><td colspan="2">2A - DBMS LAB</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>2D</td>
+<td></td><td>2A</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td>2A</td>
+<td></td><td></td><td></td><td>2D</td>
+</tr>
+</table>
+</DIV>
+<div id="f20" class="faculty">
+<h2>Mr. R. Praveen Kumar</h2>
+<p><b>Year & Subject:</b>II-A,C – OOPJ & LAB</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. R. Praveen Kumar &nbsp;&nbsp; YEAR & SUBJECT: II-A,C – OOPJ & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td>2A</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td>2C</td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>2A</td>
+<td></td><td></td><td></td><td>2C</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td></td><td>2A</td><td></td><td colspan="2">2C - JAVA LAB</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td>2C</td>
+<td></td><td>2A</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>2C</td>
+<td></td><td></td><td></td><td colspan="2">2A - JAVA LAB</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+</table>
+</DIV>
+<div id="f21" class="faculty">
+<h2>Ms. M. Vineela</h2>
+<p><b>Year & Subject:</b>II-B,D – IAI</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Ms. M. Vineela &nbsp;&nbsp; YEAR & SUBJECT: II-B,D – IAI
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td>2D</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>2D</td>
+<td></td><td></td><td></td><td>2B</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td>2B</td><td></td><td>2D</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>2B</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td>2D</td>
+</tr>
+</table>
+</DIV>
+<div id="f22" class="faculty">
+<h2>Dr. Godwin</h2>
+<p><b>Year & Subject:</b>II-B,D – OOPJ & LAB</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Dr. Godwin &nbsp;&nbsp; YEAR & SUBJECT: II-B,D – OOPJ & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>2D</td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td colspan="2">2B - JAVA LAB</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>2B</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td>2B</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td>2D</td>
+<td></td><td></td><td></td><td>2B</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>2B</td>
+<td></td><td colspan="2">2D JAVA LAB</td><td>2D</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+</table>
+</DIV>
+<div id="f23" class="faculty">
+<h2>Mr. T. Nagarjun</h2>
+<p><b>Year & Subject:</b>II-B,D – ATCD</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. T. Nagarjun &nbsp;&nbsp; YEAR & SUBJECT: II-B,D – ATCD
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td>2B</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td>2D</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>2D</td>
+<td></td><td></td><td>2B</td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>2D</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td>2B</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td>2D</td>
+<td colspan="2">2B RTRP</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td>2B</td><td></td><td></td>
+</tr>
+</table>
+</DIV>
+<div id="f24" class="faculty">
+<h2>Ms. I. Rohini</h2>
+<p><b>Year & Subject:</b>II-B – DBMS & LAB</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Ms. I. Rohini &nbsp;&nbsp; YEAR & SUBJECT: II-B – DBMS & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td colspan="2">2B DBMS LAB</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td>2B</td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td>2B</td>
+<td></td><td></td><td></td><td>2B</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td>2B</td>
+<td></td><td></td><td COLSPAN=2>2B RTRP</td>
+</tr>
+</table>
+</DIV>
+<div id="f25" class="faculty">
+<h2>Ms. CH. Sai Vijaya</h2>
+<p><b>Year & Subject:</b>II-C – DBMS & LAB</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Ms. CH. Sai Vijaya &nbsp;&nbsp; YEAR & SUBJECT: II-C – DBMS & LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>2C</td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td></td><td>2C</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td></td><td></td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td>2C</td>
+<td COLSPAN=2>IT</td><td COLSPAN=2>2C DBMS</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td COLSPAN=2>IT</td><td>2C</td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td COLSPAN=2>IT</td><td></td><td class="red">IT</td>
+</tr>
+</table>
+</DIV>
+
+<div id="f26" class="faculty">
+<h2>Mr. A. Venkanna</h2>
+<p><b>Year & Subject:</b>II-A,B,C,D – PROLOG LAB</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. A. Venkanna &nbsp;&nbsp; YEAR & SUBJECT: II-A,B,C,D – PROLOG LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td colspan="2">2C PROLOG LAB</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td colspan="2">2A PROLOG LAB</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td colspan="2">2B PROLOG LAB</td>
+<td></td><td colspan="2">2D PROLOG LAB</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td></td>
+<td></td><td></td>
+</tr>
+
+<tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Saturday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+</DIV>
+<div id="f27" class="faculty">
+<h2>Mr. K. Mahesh</h2>
+<p><b>Year & Subject:</b>2C,2C RTRP, 2A – JAVA, 3B – IP</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. K. Mahesh &nbsp;&nbsp; YEAR & SUBJECT: 2C,2C RTRP, 2A – JAVA, 3B – IP
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td></td><td></td>
+</tr>
+
+<tr><td>Tuesday</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td COLSPAN=2>2D-RTRP</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td COLSPAN=2>2C-RTRP</td><td COLSPAN=2>2A-JAVA</td>
+</tr>
+<tr>
+<td>Saturday</td>
+<td COLSPAN=2>3B-IP</td>
+<td COLSPAN=2>2D-RTRP</td><td COLSPAN=2>2C-RTRP</td>
+</tr>
+</table>
+</DIV>
+<div id="f28" class="faculty">
+<h2>Ms. K. Sandhya</h2>
+<p><b>Year & Subject:</b>2C,2D – JAVA | 2B – DBMS | 3A – DO, NLP</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Ms. K. Sandhya &nbsp;&nbsp; YEAR & SUBJECT: 2C,2D – JAVA | 2B – DBMS | 3A – DO, NLP
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td COLSPAN=2>3A-NLP</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td colspan="2">2B - DBMS</td>
+<td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td></td><td></td><td COLSPAN=2>2C - JAVA</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td COLSPAN=2>2D JAVA</td><td COLSPAN=2>3A - DO</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td COLSPAN=2>3A - DO</td><td></td>
+<td></td><td></td><td></td>
+</tr>
+</table>
+</DIV>
+<div id="f29" class="faculty">
+<h2>Ms. M. Anjali</h2>
+<p><b>Year & Subject:</b>2A,2D–DBMS | 2B–PROLOG, JAVA | 3B,C–DO</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Ms. M. Anjali &nbsp;&nbsp;
+YEAR & SUBJECT: 2A,2D–DBMS | 2B–PROLOG, JAVA | 3B,C–DO
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td COLSPAN=2>2B-JAVA</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td COLSPAN=2>2D-DBMS</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td COLSPAN=2>2B-PROLOG</td><td COLSPAN=2>2A-DBMS</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td COLSPAN=2>3C-DO</td>
+<td></td><td></td><td COLSPAN=2>3B-DO</td>
+</tr>
+</table>
+
+</DIV>
+<div id="f30" class="faculty">
+<h2>Mr. M. Mahesh</h2>
+<p><b>Year & Subject:</b>2A,2D–PROLOG | 2C–DBMS | 3B,3C–NLP</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. M. Mahesh &nbsp;&nbsp;
+YEAR & SUBJECT: 2A,2D–PROLOG | 2C–DBMS | 3B,3C–NLP
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td COLSPAN=2>3B-NLP</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td COLSPAN=2>2A-PROLOG</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td></td><td></td><td COLSPAN=2>2D-PROLOG</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td></td><td COLSPAN=2>2C-DBMS</td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td></td><td></td><td COLSPAN=2>3C-NLP</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+</table>
+</DIV>
+<div id="f31" class="faculty">
+<h2>Mr. E. Santhosh Kumar</h2>
+<p><b>Year & Subject:</b>2C–PROLOG | 3B–DO | 3ABC–DA LAB</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mr. E. Santhosh Kumar &nbsp;&nbsp;
+YEAR & SUBJECT: 2C–PROLOG | 3B–DO | 3ABC–DA LAB
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td></td><td></td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td COLSPAN=2>2C-PROLOG</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td COLSPAN=2>3C-DA</td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td></td>
+<td COLSPAN=2>3C-DO</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td></td><td></td><td COLSPAN=2>3B-DO</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td COLSPAN=2>3A-DA</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td></td><td></td><td COLSPAN=2>3B-DA</td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+</table>
+</DIV>
+
+<div id="f32" class="faculty">
+<h2>Mrs. B. Mounica</h2>
+<p><b>Year & Subject:</b>IV-A,B,C – RPA</p>
+<table>
+<tr>
+<td class="faculty" colspan="9" align="left">
+FACULTY: Mrs. B. Mounica &nbsp;&nbsp;
+YEAR & SUBJECT: IV-A,B,C – RPA
+</td>
+</tr>
+
+<tr>
+<th>Day</th><th>8.45-9.45</th><th>9.45-10.45</th>
+<th>10.45-11.00</th><th>11.00-12.00</th>
+<th>12.00-01.00</th><th>1.00-1.40</th>
+<th>1.40-2.40</th><th>2.40-3.40</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td>4C</td><td>4B</td>
+<td class="vertical" rowspan="6">BREAK</td>
+<td></td><td>4C</td>
+<td class="vertical" rowspan="6">LUNCH</td>
+<td>4B</td><td></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td></td><td>4C</td>
+<td>4B</td><td></td><td></td><td>4B</td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td></td><td></td>
+<td>4A</td><td></td><td></td><td>4A</td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td></td><td></td>
+<td></td><td>4A</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td></td><td></td>
+<td></td><td></td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td></td><td></td>
+<td class="red" COLSPAN=2>2A-RTRP</td><td></td><td></td>
+</tr>
+</table>
+</DIV>
+<!-- ADD REMAINING FACULTY USING SAME PATTERN -->
+
+<p><b>Select a faculty name from the left panel</b></p>
+
+</div>
+</div>
+
+
+
+</body>
+</html>
